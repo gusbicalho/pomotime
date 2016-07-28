@@ -1,17 +1,6 @@
 (ns pomotime.components.task-store
   (:require [pomotime.task-store :as ts]
             [com.stuartsierra.component :as component]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
-            [pomotime.misc :as misc]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
-            [clojure.spec :as s]
             [clojure.spec :as s]))
 
 (s/def ::tasks
