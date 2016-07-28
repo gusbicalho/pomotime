@@ -1,5 +1,8 @@
 (ns pomotime.time
-  (:import [java.time LocalDateTime ZonedDateTime ZoneOffset]
+  (:require [clojure.spec :as s]
+            [clojure.spec.gen :as gen]
+            [clojure.spec.gen :as gen])
+  (:import [java.time LocalDateTime ZonedDateTime ZoneOffset Instant]
            [java.time.format DateTimeFormatter]
            ))
 
@@ -13,5 +16,10 @@
       (.withZoneSameInstant ZoneOffset/UTC)
       .toLocalDateTime))
 
+(defn inst->local-date-time [inst]
+  (LocalDateTime/ofInstant (Instant/ofEpochMilli (.getTime inst)) ZoneOffset/UTC))
+
 (defn datetime? [x]
   (instance? LocalDateTime x))
+
+(s/def ::datetime (s/with-gen datetime? #(gen/fmap inst->local-date-time (s/gen inst?))))
